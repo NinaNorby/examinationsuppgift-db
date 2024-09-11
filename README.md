@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## **Slutuppgift v3.1**
 
-First, run the development server:
+Studenterna ska bygga en inventariehanteringsapplikation där användare kan hantera inventarieobjekt. Applikationen ska använda Next.js för både  backend och valfri frontend och Prisma för databasinteraktion. Fokus ska ligga på backend-funktionaliteten.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Modeller**:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **User**: Hanterar användarregistrering och autentisering.
+    - Fields: id, name, email, password
+2. **Item**: Representerar ett inventarieobjekt.
+    - Fields: id, name, description, quantity, category
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+Studenterna ska bygga en inventariehanteringsapplikation där användare kan hantera inventarieobjekt. Applikationen ska använda Next.js för både  backend och valfri frontend och Prisma för databasinteraktion. Fokus ska ligga på backend-funktionaliteten.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### **Specifikationer:**
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Setup och Modeller**:
+    - Skapa en Next.js-applikation.
+    - Definiera Prisma-modeller för User och Item
+    - Kör Prisma migrations för att skapa databasschemat.
+2. **API-rutter**:
+    - Implementera CRUD-operationer för Item.
+    - Validera in och ut data och retunera errors där det är rimligt
+    - Implementera användarregistrering och autentisering med JWT.
+    - (**VG**) Hämtning av items ska det gå att filtrera på kategorier (flera valbara) och på lagerstatus om det finns eller inte i lagret (true/false)
+    - (**VG**) Manipulativa dataanrop (skapande och uppdatering) kan inte ske om man inte är inloggad.
+    - 3. **Frontend**:
+    - Skapa enkla sidor för att:
+        - Registrera och logga in användare.
+        - Skapa, läsa, uppdatera och radera inventarieobjekt.
+        - (**VG**) Visa konkreta errors som retuneras från backend
+        - Valfri design  / styling men lägg inte ner för mycket tid på det utan fokusera på funktionalitet.
