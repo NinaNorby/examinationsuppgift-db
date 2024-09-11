@@ -1,6 +1,12 @@
+/*Allt som placeras i layout.js kommer att visas på alla sidor av applikation. Jag kommer att vilja att man alltid kommer att ska ha tillgång till logga ut och logga in/logga ut oavsett vilken sida man är på även om det endast kommer att vara 2 sidor i detta projekt . Jag vill även att autentisteringen ska finnas med*/
+
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/context/auth";  // Importera din AuthProvider
+import Header from "@/components/Header";  // Importera src\components\Header.js
 
+
+// Använd Google Font om du vill (valfritt)
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthProvider>  {/* Omsluter allt med AuthProvider src\context\auth.js  */}
+          <Header />   {/* Lägger till Header-komponenten . Header och alla komponenter inuti AuthProvider kan använda autentiseringsinformationen*/}
+          {children}   {/* Den här platsen reserverar utrymme för att rendera sidinnehåll (som definieras i andra filer, t.ex. page.js). När en specifik sida visas, byts {children} ut mot innehållet för den sidan. */}
+        </AuthProvider>
+      </body>
     </html>
   );
 }

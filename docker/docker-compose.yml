@@ -1,0 +1,24 @@
+services:
+  db:
+    container_name: postgres_examinationsuppgift_db
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: examinationsuppgift-db
+    ports:
+      - "6500:5432" # 6500 is the port that will be exposed to the host machine
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # init.sql is the file that will be executed when the container is created
+      - ./data:/var/lib/postgresql/data # data is the folder where the data will be stored this is important to persist the data even if the container is deleted
+
+  pgadmin:
+    container_name: pgadmin_examinationsuppgift_db
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
